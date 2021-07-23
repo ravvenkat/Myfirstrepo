@@ -1,3 +1,5 @@
+#https://www.pythonprogramming.in/how-do-i-pass-instance-of-an-object-as-an-argument-in-a-function-in-python.html
+
 class Vehicle:
     def __init__(self):
         self.trucks = []
