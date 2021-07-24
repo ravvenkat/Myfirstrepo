@@ -1,3 +1,5 @@
+#https://stackoverflow.com/questions/222877/what-does-super-do-in-python-difference-between-super-init-and-expl/33469090#33469090
+
 Super() in a nutshell
 Every Python instance has a class that created it.
 Every class in Python has a chain of ancestor classes.
