@@ -1,3 +1,5 @@
+#https://stackoverflow.com/questions/56714419/super-and-changing-the-signature-of-cooperative-methods/56714809#56714809
+
 some great answers here, but they do not tackle how to use super() in the case where different classes in the hierarchy have different signatures ... especially in the case of __init__
 
 to answer that part and to be able to effectively use super() i'd suggest reading my answer super() and changing the signature of cooperative methods.
