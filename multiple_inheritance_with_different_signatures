@@ -1,0 +1,51 @@
+some great answers here, but they do not tackle how to use super() in the case where different classes in the hierarchy have different signatures ... especially in the case of __init__
+
+to answer that part and to be able to effectively use super() i'd suggest reading my answer super() and changing the signature of cooperative methods.
+
+here's just the solution to this scenario:
+
+the top-level classes in your hierarchy must inherit from a custom class like SuperObject:
+if classes can take differing arguments, always pass all arguments you received on to the super function as keyword arguments, and, always accept **kwargs.
+class SuperObject:        
+    def __init__(self, **kwargs):
+        print('SuperObject')
+        mro = type(self).__mro__
+        assert mro[-1] is object
+        if mro[-2] is not SuperObject:
+            raise TypeError(
+                'all top-level classes in this hierarchy must inherit from SuperObject',
+                'the last class in the MRO should be SuperObject',
+                f'mro={[cls.__name__ for cls in mro]}'
+            )
+
+        # super().__init__ is guaranteed to be object.__init__        
+        init = super().__init__
+        init()
+example usage:
+
+class A(SuperObject):
+    def __init__(self, **kwargs):
+        print("A")
+        super(A, self).__init__(**kwargs)
+
+class B(SuperObject):
+    def __init__(self, **kwargs):
+        print("B")
+        super(B, self).__init__(**kwargs)
+
+class C(A):
+    def __init__(self, age, **kwargs):
+        print("C",f"age={age}")
+        super(C, self).__init__(age=age, **kwargs)
+
+class D(B):
+    def __init__(self, name, **kwargs):
+        print("D", f"name={name}")
+        super(D, self).__init__(name=name, **kwargs)
+
+class E(C,D):
+    def __init__(self, name, age, *args, **kwargs):
+        print( "E", f"name={name}", f"age={age}")
+        super(E, self).__init__(name=name, age=age, *args, **kwargs)
+
+E(name='python', age=28)
