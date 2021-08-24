@@ -19,7 +19,7 @@ int main()
     {  
         printf("%d \n", b[i]);  
     }
-  n=getarray(b);  
+  n=getarray(b);    /==========if you replace b with &b this will become call by reference ==================================/
   printf("\nElements of array are :");  
   for(int i=0;i<5;i++)  
     {  
