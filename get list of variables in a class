@@ -1,0 +1,38 @@
+class Person:
+
+  age = 0
+  def __init__(mysillyobject, name, age):
+    mysillyobject.name = name
+    mysillyobject.age2 = age
+    
+
+  def myfunc(abc):
+    print("Hello my name is " + abc.name)
+    print("age is",abc.age)
+
+p1 = Person("John", 36)
+p1.myfunc()
+
+setattr(p1,'standard',258)
+
+print("person standard is ", p1.standard)
+print("person standard added is ", p1.standard + 1)
+#print(dir(p1))
+
+members = [attr for attr in dir(p1) 
+
+                    if 
+                    not callable(getattr(p1, attr)) 
+                    and 
+                    not attr.startswith("__")]
+print(members)
+
+
+output:
+=======
+
+Hello my name is John
+age is 0
+person standard is  258
+person standard added is  259
+['age', 'age2', 'name', 'standard']
