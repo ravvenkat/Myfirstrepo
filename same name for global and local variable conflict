@@ -1,0 +1,21 @@
+########## https://www.python-course.eu/python3_global_vs_local_variables.php 
+
+A variable can't be both local and global inside a function. 
+So Python decides that we want a local variable due to the assignment to s inside f(), 
+so the first print statement before the definition of s throws the error message above. 
+Any variable which is changed or created inside a function is local, if it hasn't been declared as a global variable. 
+To tell Python, that we want to use the global variable, we have to explicitly state this by using the keyword "global", as can be seen in the following example:
+
+def f():
+    global s
+    print(s)
+    s = "Only in spring, but London is great as well!"
+    print(s)
+
+
+s = "I am looking for a course in Paris!" 
+f()
+print(s)
+I am looking for a course in Paris!
+Only in spring, but London is great as well!
+Only in spring, but London is great as well!
