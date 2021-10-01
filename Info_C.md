@@ -31,6 +31,33 @@ uint32_t arr[] = { 1, 3, 5, 7, 9 };
 uint32_t *ptr = arr;
 uint32_t num = 2;
 
+
+
+
+********************************************************************************************************
+1) If you just cast from unsigned to signed integer of the same length back and forth, without any operations in between, 
+ you will get the same result every time, so no problem here. But various logical and arithmetical operations are acting differently on signed and unsigned operands.
+3) The main reason to use stdint.h types is that the bit size of such a types are defined and equal across all of the platforms, 
+  which is not true for int, long e.t.c., as well as char has no standard signess, it can be signed or unsigned by default. 
+  It makes easier to manipulate the data knowing the exact size without using extra checking and assumptions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 printf("%u\n", *(ptr + num));
 this would print 5, because ptr[2] is 5.
 
