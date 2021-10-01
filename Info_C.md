@@ -31,10 +31,14 @@ uint32_t arr[] = { 1, 3, 5, 7, 9 };
 uint32_t *ptr = arr;
 uint32_t num = 2;
 
+printf("%u\n", *(ptr + num));
+this would print 5, because ptr[2] is 5.
 
 
 
-********************************************************************************************************
+
+
+**https://electronics.stackexchange.com/questions/145017/for-embedded-code-why-should-i-use-uint-t-types-instead-of-unsigned-int*******************************************************************
 1) If you just cast from unsigned to signed integer of the same length back and forth, without any operations in between, 
  you will get the same result every time, so no problem here. But various logical and arithmetical operations are acting differently on signed and unsigned operands.
 3) The main reason to use stdint.h types is that the bit size of such a types are defined and equal across all of the platforms, 
@@ -56,8 +60,4 @@ uint32_t num = 2;
 
 
 
-
-
-printf("%u\n", *(ptr + num));
-this would print 5, because ptr[2] is 5.
 
