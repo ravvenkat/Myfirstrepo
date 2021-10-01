@@ -47,7 +47,8 @@ this would print 5, because ptr[2] is 5.
 
 
 
-
+Type Casting Of Pointers in C":
+https://ecomputernotes.com/what-is-c/function-a-pointer/type-casting-of-pointers
 
 
 
